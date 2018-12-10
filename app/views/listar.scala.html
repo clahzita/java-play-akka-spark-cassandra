@@ -1,0 +1,23 @@
+@(pacotes: List[PacoteInfo])
+
+@main("Lista de Pacotes") {
+  <h1>Lista de Pacotes</h2>
+  <table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Local Partida</th>
+			<th>Dia Partida</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@for(pacote <- pacotes){
+		<tr>
+			<td>@pacote.localPartida</td>
+			<td>@pacote.diaPartida</td>
+			<td><a href=#>Edit</a></td>
+		</tr>
+		}
+	</tbody>
+</table>
+}

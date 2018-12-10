@@ -4,7 +4,7 @@
 		module="java-play-akka-spark-cassandra_2.11"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20181208232032"
+		publication="20181210184811"
 	>
 		<description>
 		java-play-akka-spark-cassandra

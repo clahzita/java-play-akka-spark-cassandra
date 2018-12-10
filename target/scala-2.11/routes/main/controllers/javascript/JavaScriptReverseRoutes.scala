@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/dionisio/eclipse-workspace-concorrente/java-play-akka-spark-cassandra/conf/routes
-// @DATE:Sat Dec 08 23:20:33 BRT 2018
+// @SOURCE:/home/clarissa/eclipse-workspace/java-play-akka-spark-cassandra/conf/routes
+// @DATE:Mon Dec 10 19:04:23 BRT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -18,6 +18,16 @@ package controllers.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
+    // @LINE:13
+    def listarPacotes: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ActorController.listarPacotes",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "pacotes"})
+        }
+      """
+    )
   
     // @LINE:11
     def meuMetodo: JavaScriptReverseRoute = JavaScriptReverseRoute(

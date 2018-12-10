@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/dionisio/eclipse-workspace-concorrente/java-play-akka-spark-cassandra/conf/routes
-// @DATE:Sat Dec 08 23:20:33 BRT 2018
+// @SOURCE:/home/clarissa/eclipse-workspace/java-play-akka-spark-cassandra/conf/routes
+// @DATE:Mon Dec 10 19:04:23 BRT 2018
 
 package router
 
@@ -46,6 +46,7 @@ class Routes(
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """actor/""" + "$" + """msg<.+>""", """controllers.ActorController.meuMetodo(msg:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """pacotes""", """controllers.ActorController.listarPacotes()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -107,6 +108,24 @@ class Routes(
     )
   )
 
+  // @LINE:13
+  private[this] lazy val controllers_ActorController_listarPacotes3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("pacotes")))
+  )
+  private[this] lazy val controllers_ActorController_listarPacotes3_invoker = createInvoker(
+    ActorController_0.listarPacotes(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ActorController",
+      "listarPacotes",
+      Nil,
+      "GET",
+      this.prefix + """pacotes""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -126,6 +145,12 @@ class Routes(
     case controllers_ActorController_meuMetodo2_route(params@_) =>
       call(params.fromPath[String]("msg", None)) { (msg) =>
         controllers_ActorController_meuMetodo2_invoker.call(ActorController_0.meuMetodo(msg))
+      }
+  
+    // @LINE:13
+    case controllers_ActorController_listarPacotes3_route(params@_) =>
+      call { 
+        controllers_ActorController_listarPacotes3_invoker.call(ActorController_0.listarPacotes())
       }
   }
 }
